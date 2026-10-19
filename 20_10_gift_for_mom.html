@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Mẹ Yêu Thương - 20/10 Trọn Vẹn Niềm Vui</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Dancing Script & Be Vietnam Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FFFDF9',
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        },
+                        gold: '#D4AF37',
+                        goldlight: '#F3E5AB'
+                    },
+                    fontFamily: {
+                        handwriting: ['"Dancing Script"', 'cursive'],
+                        accent: ['"Caveat"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom animations & particle canvas overlay */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7aa 25%, #fce7f3 70%, #fff1f2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #petal-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.12);
+        }
+
+        /* Sparkle & Ribbon frame decorations */
+        .cute-frame {
+            position: relative;
+            border: 8px solid #fbcfe8;
+            border-image: linear-gradient(to bottom right, #f43f5e, #fda4af, #fef08a, #f43f5e) 1;
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.35);
+        }
+
+        .sparkle-dot {
+            position: absolute;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Cute pulse for main button */
+        .btn-heartbeat {
+            animation: heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.06); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.06); }
+            70% { transform: scale(1); }
+        }
+
+        /* Envelope transition effect */
+        .envelope-top {
+            clip-path: polygon(0 0, 50% 50%, 100% 0);
+        }
+
+        .typewriter-text {
+            border-right: 2px solid #e11d48;
+            white-space: pre-wrap;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #e11d48; }
+        }
+
+        /* Floating effect for decor elements */
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+        .alex-brush-regular {
+            font-family: "Alex Brush", cursive;
+            font-style: normal;}
+
+    </style>
+</head>
+<body class="relative text-gray-800 antialiased selection:bg-rose-200 selection:text-rose-800">
+
+    <!-- Particle Layer for Floating Hearts & Petals -->
+    <canvas id="petal-canvas"></canvas>
+
+    <!-- Audio Player (Background sound support) -->
+    <audio id="bg-music" loop>
+        <!-- Royalty-free soothing piano background melody fallback -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-piano-112178.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Container -->
+    <main class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 relative z-20">
+
+        <!-- =============================================================== -->
+        <!-- BƯỚC 1: MÀN HÌNH CHÀO MỪNG (WELCOME INTRO) -->
+        <!-- =============================================================== -->
+        <section id="step-1" class="w-full max-w-2xl text-center space-y-6 transition-all duration-700 opacity-100 transform scale-100">
+            <div class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden border-2 border-rose-200">
+                <!-- Decorative Corner Flowers -->
+                <div class="absolute -top-6 -left-6 text-rose-400 text-5xl opacity-80 floating">🌸</div>
+                <div class="absolute -bottom-6 -right-6 text-rose-400 text-5xl opacity-80 floating" style="animation-delay: 2s;">🌹</div>
+                <div class="absolute top-4 right-4 text-amber-400 text-2xl animate-spin" style="animation-duration: 8s;">🎶</div>
+
+                <!-- Envelope Badge Icon -->
+                <div class="w-24 h-24 mx-auto bg-gradient-to-tr from-rose-400 to-pink-300 rounded-full flex items-center justify-center shadow-lg mb-6 ring-4 ring-rose-100 floating">
+                    <i class="fa-solid fa-gift text-5xl text-white"></i>
+                </div>
+
+                <span class="inline-block px-4 py-1.5 bg-rose-100 text-rose-700 font-semibold text-xs md:text-sm rounded-full tracking-wide uppercase mb-2">
+                    20 Tháng 10 - Ngày Phụ Nữ Việt Nam
+                </span>
+
+                <h1 class="text-3xl md:text-5xl font-bold text-rose-700 font-handwriting leading-relaxed">
+                    Món Quà Đặc Biệt Dành Tặng Mẹ Yêu ❤️
+                </h1>
+
+                <p class="text-gray-600 text-base md:text-lg max-w-md mx-auto font-light leading-relaxed">
+                    Gửi trọn tình cảm, sự biết ơn và những lời chúc ngọt ngào nhất từ trái tim đứa con bé bỏng gửi đến Mẹ!
+                </p>
+
+                <!-- Open Gift Button -->
+                <div class="pt-6">
+                    <button id="btn-start" onclick="goToStep2()" class="btn-heartbeat bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-lg md:text-xl px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 mx-auto border-2 border-white">
+                        <span>Mở quà 20/10 dành tặng Mẹ</span>
+                        <i class="fa-solid fa-heart text-amber-200 animate-bounce"></i>
+                    </button>
+                </div>
+
+                <p class="text-xs text-rose-400 italic pt-2">
+                    💡 Bấm nút để bật nhạc & mở trải nghiệm bất ngờ Mẹ nhé!
+                </p>
+            </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- BƯỚC 2: TRÌNH CHIẾU VIDEO BÀI HÁT TẶNG MẸ -->
+        <!-- =============================================================== -->
+        <section id="step-2" class="w-full max-w-3xl space-y-6 hidden opacity-0 transform scale-95 transition-all duration-700">
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-2xl relative border-2 border-pink-200">
+                
+                <!-- Header Banner -->
+                <div class="text-center mb-6">
+                    <span class="text-rose-500 text-2xl font-bold alex-brush-regular">~ Giai điệu dành riêng cho Mẹ ~</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 flex items-center justify-center gap-2 mt-1">
+                        <span>Lắng Nghe Giai Điệu Yêu Thương</span>
+                        <i class="fa-solid fa-music text-rose-500 text-xl animate-bounce"></i>
+                    </h2>
+                    <p class="text-sm text-gray-500 mt-1">Mẹ hãy đeo tai nghe hoặc bật âm lượng vừa đủ để cảm nhận trọn vẹn bài hát nhé! ❤️</p>
+                </div>
+
+                <!-- Cute Decorative Frame Container -->
+                <div class="relative p-3 md:p-4 bg-gradient-to-r from-pink-200 via-rose-100 to-amber-100 rounded-2xl shadow-inner border-4 border-white">
+                    
+                    <!-- Frame Ribbon Badge Top Center -->
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-rose-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md z-30 flex items-center gap-1">
+                    </div>
+
+                    <!-- Video Iframe wrapper (16:9 ratio) -->
+                    <div class="relative w-full overflow-hidden rounded-xl bg-black aspect-video shadow-lg border-2 border-rose-300">
+                        <!-- YouTube Embed ("Nhật Ký Của Mẹ" / Video bài hát cảm động) -->
+                        <iframe id="song-video" class="w-full h-full" 
+                            src="https://www.youtube.com/embed/5aG_a4Y2B7E?enablejsapi=1&autoplay=0&rel=0" 
+                            title="Nhật Ký Của Mẹ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Cute Sparkle Dots around frame -->
+                    <div class="sparkle-dot text-amber-400 text-xl top-2 left-2">✨</div>
+                    <div class="sparkle-dot text-rose-400 text-lg bottom-2 left-4">💖</div>
+                    <div class="sparkle-dot text-amber-400 text-xl top-2 right-2">✨</div>
+                    <div class="sparkle-dot text-pink-500 text-lg bottom-2 right-4">🌸</div>
+                </div>
+
+                <!-- Video Actions / Controls -->
+                <div class="mt-6 text-center space-y-4">
+                    <div class="p-3 bg-rose-50 rounded-xl text-xs md:text-sm text-rose-700 border border-rose-200 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info text-rose-500"></i>
+                        <span>Sau khi nghe xong video bài hát, Mẹ bấm vào nút phía dưới để xem bức thư con viết nhé!</span>
+                    </div>
+
+                    <button id="btn-to-letter" onclick="goToStep3()" class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-base md:text-lg px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto ring-4 ring-rose-100">
+                        <span>Đọc thư con gửi tặng Mẹ</span>
+                        <i class="fa-solid fa-envelope-open-text text-amber-200"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- BƯỚC 3: MÀN THƯ GỬI MẸ & CÁC TÍNH NĂNG TƯƠNG TÁC -->
+        <!-- =============================================================== -->
+        <section id="step-3" class="w-full max-w-4xl space-y-8 hidden opacity-0 transform scale-95 transition-all duration-700 my-4">
+            
+            <!-- Letter Card Section -->
+            <div class="glass-card rounded-3xl p-6 md:p-12 shadow-2xl relative border-2 border-rose-200 bg-amber-50/70">
+                
+                <!-- Top Stamps Decoration -->
+                <div class="flex justify-between items-start border-b border-rose-200 pb-4 mb-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-rose-400 font-bold block">Thư Tay 20/10</span>
+                        <h2 class="text-2xl md:text-4xl font-bold text-rose-700 font-handwriting">Gửi Mẹ Yêu Thương Của Con ❤️</h2>
+                    </div>
+                    <div class="w-12 h-16 md:w-16 md:h-20 bg-rose-100 border-2 border-dashed border-rose-400 rounded p-1 flex flex-col items-center justify-center text-center shadow-sm">
+                        <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
+                        <span class="text-[9px] text-rose-600 font-bold mt-1">20/10/2026</span>
+                    </div>
+                </div>
+
+                <!-- Letter Content Area (Typewriter Effect output) -->
+                <div class="min-h-[280px] text-gray-700 text-base md:text-lg leading-relaxed font-sans font-normal bg-white/80 p-6 md:p-8 rounded-2xl shadow-inner border border-rose-100">
+                    <p id="typewriter-output" class="typewriter-text text-gray-800 whitespace-pre-line leading-loose"></p>
+                </div>
+
+                <!-- Letter Signature -->
+                <div class="mt-6 text-right space-y-1">
+                    <p class="text-sm text-gray-500 italic">Con của Mẹ,</p>
+                    <p class="text-2xl md:text-3xl font-bold text-rose-600 font-handwriting">Yêu Mẹ Rất Nhiều! ❤️</p>
+                </div>
+
+                <!-- Interactive "Ngàn Lời Yêu Thương" Button -->
+                <div class="mt-8 pt-6 border-t border-rose-200 text-center">
+                    <button onclick="triggerLoveShower()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold text-sm md:text-base px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 mx-auto active:scale-95">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-200"></i>
+                        <span>Bấm vào đây để nhận ngàn lời yêu thương Mẹ!</span>
+                        <i class="fa-solid fa-heart text-white animate-pulse"></i>
+                    </button>
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO MEMORY GALLERY CAROUSEL -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-xl border border-rose-200">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800 font-handwriting text-3xl">Khoảnh Khắc Đáng Nhớ </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Photo 1 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-md border-4 border-white transform hover:-translate-y-1 transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Mẹ và gia đình" class="w-full h-52 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                        <p class="absolute bottom-3 left-3 text-white text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-smile text-amber-300"></i> Nụ cười ấm áp của Mẹ
+                        </p>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-md border-4 border-white transform hover:-translate-y-1 transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Bình yên bên Mẹ" class="w-full h-52 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                        <p class="absolute bottom-3 left-3 text-white text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-sun text-amber-300"></i> Bình yên nhất là khi có Mẹ
+                        </p>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-md border-4 border-white transform hover:-translate-y-1 transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1490578474895-699bc4e2cf59?auto=format&fit=crop&w=600&q=80" alt="Bông hoa yêu thương" class="w-full h-52 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                        <p class="absolute bottom-3 left-3 text-white text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-spa text-pink-300"></i> Mẹ là bông hoa đẹp nhất
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RANDOM AFFECTION CARD GENERATOR (RÚT QUẺ YÊU THƯƠNG) -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-xl border border-rose-200 text-center space-y-4">
+                <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">
+                    🎁 Quẻ Yêu Thương Ngày 20/10
+                </span>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800">Mẹ Rút Một Lời Chúc May Mắn Nào!</h3>
+                <p class="text-sm text-gray-500">Chạm vào nút dưới đây để nhận một điều ước và lời nhắn ngọt ngào bí mật dành riêng cho Mẹ hôm nay.</p>
+
+                <div id="wish-box" class="min-h-[90px] flex items-center justify-center p-4 bg-rose-50 border-2 border-dashed border-rose-300 rounded-2xl transition-all duration-300">
+                    <p id="wish-text" class="text-rose-700 font-semibold text-base md:text-lg italic">
+                        "Nhấn nút bên dưới để nhận quẻ may mắn Mẹ nhé! ✨"
+                    </p>
+                </div>
+
+                <button onclick="generateRandomWish()" class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold text-sm md:text-base px-6 py-3 rounded-full shadow transition duration-200 flex items-center justify-center gap-2 mx-auto active:scale-95">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <span>Rút Lời Chúc Ngẫu Nhiên</span>
+                </button>
+            </div>
+
+            <!-- Footer Message -->
+            <footer class="text-center py-6 text-rose-700/80 text-sm">
+                <p class="font-medium">Chúc Mẹ có một ngày 20/10 thật nhiều niềm vui, sức khỏe và hạnh phúc! ❤️</p>
+                <p class="text-xs text-gray-500 mt-1">Made with unconditional love for Mom</p>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* ===============================================================
+           1. FULL PETAL & HEART FLOATING PARTICLE SYSTEM
+           =============================================================== */
+        const canvas = document.getElementById('petal-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 12 + 8;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 2 - 1;
+                this.type = Math.random() > 0.4 ? 'petal' : 'heart';
+                this.color = this.type === 'petal' 
+                    ? `rgba(244, 63, 94, ${Math.random() * 0.5 + 0.4})` 
+                    : `rgba(225, 29, 72, ${Math.random() * 0.6 + 0.3})`;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) + this.speedX;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > canvas.height + 20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+
+                if (this.type === 'petal') {
+                    // Draw Rose Petal Shape
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size, this.size, 0, this.size * 1.2);
+                    ctx.bezierCurveTo(this.size, this.size, this.size, -this.size / 2, 0, 0);
+                    ctx.fill();
+                } else {
+                    // Draw Heart Shape
+                    ctx.beginPath();
+                    const topCurveHeight = this.size * 0.3;
+                    ctx.moveTo(0, topCurveHeight);
+                    ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+                    ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        // Initialize particles
+        for (let i = 0; i < 35; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* ===============================================================
+           2. NAVIGATION & STEP TRANSITIONS
+           =============================================================== */
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        const bgMusic = document.getElementById('bg-music');
+
+        function goToStep2() {
+            // Attempt playing soft background music
+            bgMusic.play().catch(e => console.log("Audio autoplay restricted:", e));
+
+            // Fade out Step 1
+            step1.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                step1.classList.add('hidden');
+                
+                // Show Step 2
+                step2.classList.remove('hidden');
+                setTimeout(() => {
+                    step2.classList.remove('opacity-0', 'scale-95');
+                    step2.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }, 500);
+        }
+
+        function goToStep3() {
+            // Fade out Step 2
+            step2.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                step2.classList.add('hidden');
+                
+                // Show Step 3
+                step3.classList.remove('hidden');
+                setTimeout(() => {
+                    step3.classList.remove('opacity-0', 'scale-95');
+                    step3.classList.add('opacity-100', 'scale-100');
+                    // Start Typewriter effect when step 3 opens
+                    startTypewriter();
+                }, 50);
+            }, 500);
+        }
+
+        /* ===============================================================
+           3. TYPEWRITER EFFECT FOR THE LETTER TO MOM
+           =============================================================== */
+        const letterContent = 
+`Mẹ kính yêu của con,
+
+Nhân ngày Phụ nữ Việt Nam 20/10, con xin gửi tới Mẹ những lời chúc ấm áp nhất từ sâu thẳm trái tim con.
+
+Cảm ơn Mẹ đã luôn là điểm tựa vững chắc, vất vả nuôi dưỡng và bao bọc con qua bao năm tháng. Sự hy sinh thầm lặng, nụ cười và tình yêu vô điều kiện của Mẹ là món quà vô giá nhất mà cuộc đời đã ban tặng cho con.
+
+Con chúc Mẹ luôn dồi dào sức khỏe, tràn ngập niềm vui, lúc nào cũng bình an và hạnh phúc bên gia đình mình. Dù sau này con có đi đâu xa, gia đình và Mẹ vẫn mãi là nơi ấm áp nhất con luôn hướng về.
+
+Con yêu Mẹ nhiều lắm! ❤️`;
+
+        let charIndex = 0;
+        const typewriterEl = document.getElementById('typewriter-output');
+
+        function startTypewriter() {
+            if (!typewriterEl) return;
+            typewriterEl.textContent = '';
+            charIndex = 0;
+            
+            function typeNextChar() {
+                if (charIndex < letterContent.length) {
+                    typewriterEl.textContent += letterContent.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeNextChar, 35); // Typing speed
+                }
+            }
+            typeNextChar();
+        }
+
+        /* ===============================================================
+           4. INTERACTIVE FEATURES: LOVE SHOWER & RANDOM WISHES
+           =============================================================== */
+        
+        // Burst extra hearts across the screen
+        function triggerLoveShower() {
+            for (let i = 0; i < 25; i++) {
+                const extraParticle = new Particle();
+                extraParticle.y = canvas.height / 2;
+                extraParticle.x = canvas.width / 2;
+                extraParticle.speedY = (Math.random() - 0.5) * 8;
+                extraParticle.speedX = (Math.random() - 0.5) * 8;
+                particles.push(extraParticle);
+            }
+
+            // Show Toast notification
+            const toast = document.getElementById('shower-toast');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 3000);
+        }
+
+        // Random wishes generator array
+        const randomWishes = [
+            "🌸 Chúc Mẹ luôn trẻ trung, tươi tắn như những bông hoa mùa xuân rạng rỡ!",
+            "💖 Chúc Mẹ mỗi ngày trôi qua đều ngập tràn nụ cười, không còn những âu lo vất vả!",
+            "🍀 Chúc Mẹ luôn thật nhiều sức khỏe, sống lâu trăm tuổi cùng con cháu!",
+            "✨ Mong mọi điều may mắn, an yên và hạnh phúc nhất sẽ luôn đồng hành cùng Mẹ!",
+            "🎁 Mẹ là người phụ nữ tuyệt vời nhất thế giới! Chúc Mẹ 20/10 thật trọn vẹn niềm vui!",
+            "🌷 Chúc Mẹ lúc nào cũng cảm thấy thư thái, hạnh phúc và luôn tự hào về gia đình mình!"
+        ];
+
+        function generateRandomWish() {
+            const wishTextEl = document.getElementById('wish-text');
+            const wishBox = document.getElementById('wish-box');
+            
+            // Add smooth fade animation
+            wishBox.classList.add('scale-95', 'opacity-50');
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * randomWishes.length);
+                wishTextEl.textContent = randomWishes[randomIndex];
+                wishBox.classList.remove('scale-95', 'opacity-50');
+            }, 200);
+        }
+    </script>
+</body>
+</html>
